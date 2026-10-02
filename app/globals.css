@@ -44,21 +44,22 @@
     color: var(--text-primary);
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer components {
   /* Typography Scale */
   .h1-hero {
-    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
     line-height: 1.1;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--navy);
-  }
-
-  .h1-hero-mobile {
-    font-size: clamp(2.1rem, 9vw, 2.5rem);
-    line-height: 1.15;
     font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--navy);

@@ -58,7 +58,7 @@ export default function BillingDemo() {
   });
 
   const handleDownload = async () => {
-    if (!printRef.current) return;
+    if (!printRef.current || items.length === 0 || !customerName.trim()) return;
     
     try {
       // Temporarily hide the UI buttons while generating PDF
@@ -105,11 +105,19 @@ export default function BillingDemo() {
                  <ShieldCheck size={14} /> Auto-saving
                </span>
                <div className="h-4 w-px bg-[#E2E8F0] hidden sm:block mx-1" />
-               <button onClick={() => handlePrint()} className="flex items-center gap-1.5 bg-white border border-[#E2E8F0] text-[#0F172A] px-3 py-1.5 rounded-md text-sm font-semibold shadow-sm hover:bg-[#F8FAFC] transition-colors focus:ring-2 focus:ring-[#2563EB] focus:ring-offset-1">
-                 <Printer size={14} /> <span className="hidden sm:inline">Print</span>
+               <button 
+                 onClick={() => handlePrint()} 
+                 disabled={items.length === 0 || !customerName.trim()}
+                 className="flex items-center gap-1.5 bg-white border border-[#E2E8F0] text-[#0F172A] px-3 py-1.5 md:px-4 md:py-2 rounded-md text-sm font-semibold shadow-sm hover:bg-[#F8FAFC] transition-colors focus:ring-2 focus:ring-[#2563EB] focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed"
+               >
+                 <Printer size={16} /> <span className="hidden sm:inline">Print</span>
                </button>
-               <button onClick={handleDownload} className="flex items-center gap-1.5 bg-[#2563EB] text-white px-3 py-1.5 rounded-md text-sm font-semibold shadow-sm hover:bg-[#1D4ED8] transition-colors focus:ring-2 focus:ring-[#2563EB] focus:ring-offset-1">
-                 <Download size={14} /> <span className="hidden sm:inline">Download</span>
+               <button 
+                 onClick={handleDownload} 
+                 disabled={items.length === 0 || !customerName.trim()}
+                 className="flex items-center gap-1.5 bg-[#2563EB] text-white px-3 py-1.5 md:px-4 md:py-2 rounded-md text-sm font-semibold shadow-sm hover:bg-[#1D4ED8] transition-colors focus:ring-2 focus:ring-[#2563EB] focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed"
+               >
+                 <Download size={16} /> <span className="hidden sm:inline">Download</span>
                </button>
             </div>
           </div>
@@ -156,7 +164,7 @@ export default function BillingDemo() {
               <div>
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-sm font-bold text-[#0F172A] uppercase tracking-wider">Line Items</h3>
-                  <button onClick={addItem} className="text-[#2563EB] hover:text-[#1D4ED8] text-sm font-bold flex items-center gap-1 transition-colors">
+                  <button onClick={addItem} className="text-[#2563EB] hover:text-[#1D4ED8] text-sm font-bold flex items-center gap-1 transition-colors p-2 -mr-2 rounded-md focus:ring-2 focus:ring-[#2563EB]/20">
                     <Plus size={16} /> Add Item
                   </button>
                 </div>
@@ -179,10 +187,10 @@ export default function BillingDemo() {
                           {items.length > 1 && (
                             <button 
                               onClick={() => removeItem(item.id)}
-                              className="text-[#94A3B8] hover:text-[#DC2626] transition-colors focus:outline-none focus:ring-2 focus:ring-[#DC2626] rounded-md p-1"
+                              className="text-[#94A3B8] hover:text-[#DC2626] transition-colors focus:outline-none focus:ring-2 focus:ring-[#DC2626] rounded-md p-2 -mr-2"
                               aria-label="Remove item"
                             >
-                              <Trash2 size={16} />
+                              <Trash2 size={18} />
                             </button>
                           )}
                         </div>
@@ -239,6 +247,15 @@ export default function BillingDemo() {
                       </motion.div>
                     ))}
                   </AnimatePresence>
+                  
+                  {items.length === 0 && (
+                    <div className="text-center py-8 border-2 border-dashed border-[#E2E8F0] rounded-xl bg-[#F8FAFC]">
+                      <p className="text-sm font-semibold text-[#64748B] mb-2">No items added yet</p>
+                      <button onClick={addItem} className="btn-secondary text-sm h-9 px-4">
+                        Add First Item
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -279,15 +296,19 @@ export default function BillingDemo() {
                         <div className="w-28 text-right">Amount</div>
                       </div>
                       
-                      <div className="space-y-3 font-sans">
-                        {items.map((item) => (
-                          <div key={item.id} className="flex text-sm text-[#0F172A]">
-                            <div className="flex-1 pr-4">{item.description || "—"}</div>
-                            <div className="w-16 text-right">{item.quantity}</div>
-                            <div className="w-24 text-right">₹{item.unitPrice.toLocaleString('en-IN')}</div>
-                            <div className="w-28 text-right font-semibold">₹{(item.quantity * item.unitPrice).toLocaleString('en-IN')}</div>
-                          </div>
-                        ))}
+                      <div className="space-y-3 font-sans min-h-[60px]">
+                        {items.length === 0 ? (
+                          <div className="text-center text-[#94A3B8] text-sm italic py-4">No items added. Invoice is empty.</div>
+                        ) : (
+                          items.map((item) => (
+                            <div key={item.id} className="flex text-sm text-[#0F172A]">
+                              <div className="flex-1 pr-4">{item.description || <span className="text-[#94A3B8] italic">No description</span>}</div>
+                              <div className="w-16 text-right">{item.quantity}</div>
+                              <div className="w-24 text-right">₹{item.unitPrice.toLocaleString('en-IN')}</div>
+                              <div className="w-28 text-right font-semibold">₹{(item.quantity * item.unitPrice).toLocaleString('en-IN')}</div>
+                            </div>
+                          ))
+                        )}
                       </div>
                     </div>
                   </div>

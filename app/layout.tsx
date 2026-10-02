@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`} suppressHydrationWarning>
-      <body className="antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white" suppressHydrationWarning>
+      <body className="antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white overflow-x-hidden" suppressHydrationWarning>
         <Navbar />
         <main className="flex-1">
           {children}

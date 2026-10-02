@@ -1,4 +1,3 @@
-"use client";
 
 import { Building2, Briefcase, ShoppingBag, Code, ArrowRight } from "lucide-react";
 

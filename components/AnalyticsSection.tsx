@@ -1,4 +1,3 @@
-"use client";
 
 import { TrendingUp, TrendingDown, ArrowUpRight, DollarSign } from "lucide-react";
 

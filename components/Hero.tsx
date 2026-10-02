@@ -19,7 +19,7 @@ export default function Hero() {
       />
 
       <div className="container-app relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full max-w-full overflow-hidden lg:overflow-visible">
           
           {/* Left Column - Typography & CTAs */}
           <div className="lg:col-span-5 flex flex-col justify-center text-center lg:text-left">
@@ -33,14 +33,8 @@ export default function Hero() {
                 <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">Smart Billing Platform</span>
               </div>
               
-              <h1 className="hidden lg:block h1-hero mb-6 text-[#0F172A]">
-                Smart Billing.<br/>
-                <span className="text-[#2563EB]">Faster Payments.</span><br/>
-                Better Business.
-              </h1>
-              {/* Mobile Headline (allows wrapping instead of forced breaks if viewport is small) */}
-              <h1 className="lg:hidden h1-hero-mobile mb-6 text-[#0F172A]">
-                Smart Billing. <span className="text-[#2563EB]">Faster Payments.</span> Better Business.
+              <h1 className="h1-hero lg:h1-hero mb-6 text-[#0F172A]">
+                Smart Billing.<br className="hidden lg:block"/> <span className="text-[#2563EB]">Faster Payments.</span><br className="hidden lg:block"/> Better Business.
               </h1>
 
               <p className="text-[#475569] text-base md:text-lg mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
@@ -75,16 +69,25 @@ export default function Hero() {
               className="relative w-full max-w-[900px] mx-auto lg:mr-[-120px] rounded-2xl ring-1 ring-[#0F172A]/5 shadow-2xl overflow-hidden bg-white"
             >
               {/* The Realistic Product UI Mockup */}
-              <div className="product-panel overflow-hidden bg-white rounded-none border-none shadow-none">
+              <div className="product-panel overflow-hidden bg-white rounded-2xl shadow-none">
                 
-                {/* App Header */}
-                <div className="h-14 border-b border-[#E2E8F0] bg-[#F8FAFC] flex items-center justify-between px-6">
-                  <div className="flex items-center gap-6">
-                    <span className="font-bold text-[#0F172A] text-sm flex items-center gap-2">
-                      <div className="w-4 h-4 rounded-[4px] bg-[#2563EB]" /> Overview
-                    </span>
-                    <span className="text-[#64748B] text-sm font-medium">October 2026</span>
+                {/* App Header (Mac Style Browser/App Frame) */}
+                <div className="h-12 border-b border-[#E2E8F0] bg-[#F8FAFC] flex items-center justify-between px-4 sm:px-6">
+                  <div className="flex items-center gap-2 mr-4">
+                    <div className="w-3 h-3 rounded-full bg-[#E2E8F0] sm:bg-[#FF5F56]" />
+                    <div className="w-3 h-3 rounded-full bg-[#E2E8F0] sm:bg-[#FFBD2E]" />
+                    <div className="w-3 h-3 rounded-full bg-[#E2E8F0] sm:bg-[#27C93F]" />
                   </div>
+                  
+                  <div className="flex-1 flex justify-center">
+                    <div className="flex items-center gap-6">
+                      <span className="font-bold text-[#0F172A] text-[13px] flex items-center gap-2">
+                        <div className="w-4 h-4 rounded-[4px] bg-[#2563EB]" /> Overview
+                      </span>
+                      <span className="text-[#64748B] text-[13px] font-medium hidden sm:block">October 2026</span>
+                    </div>
+                  </div>
+                  
                   <MoreVertical size={16} className="text-[#94A3B8]" />
                 </div>
 
