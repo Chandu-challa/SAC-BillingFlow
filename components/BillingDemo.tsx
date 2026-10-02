@@ -90,7 +90,7 @@ export default function BillingDemo() {
         </div>
 
         {/* Realistic SaaS Workspace Container */}
-        <div className="product-panel overflow-hidden bg-[#F8FAFC]">
+        <div className="product-panel overflow-hidden bg-[#F8FAFC] shadow-[0_24px_50px_-12px_rgba(15,23,42,0.15)] ring-1 ring-[#0F172A]/5">
           
           {/* Workspace Header */}
           <div className="h-14 border-b border-[#E2E8F0] bg-white flex items-center justify-between px-4 lg:px-6">
@@ -125,7 +125,7 @@ export default function BillingDemo() {
           <div className="grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[#E2E8F0]">
             
             {/* Left Column: Form Controls */}
-            <div className="p-5 lg:p-8 bg-white overflow-y-auto min-h-[500px] lg:min-h-[600px] lg:max-h-[calc(100vh-200px)]">
+            <div className="p-5 lg:p-8 bg-white overflow-y-auto min-h-[500px] lg:min-h-[600px] lg:max-h-[calc(100vh-200px)] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               <div className="mb-6">
                 <h3 className="text-sm font-bold text-[#0F172A] uppercase tracking-wider mb-4 flex items-center gap-2">
                   <div className="w-1.5 h-4 bg-[#2563EB] rounded-sm" />
@@ -164,9 +164,6 @@ export default function BillingDemo() {
               <div>
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-sm font-bold text-[#0F172A] uppercase tracking-wider">Line Items</h3>
-                  <button onClick={addItem} className="text-[#2563EB] hover:text-[#1D4ED8] text-sm font-bold flex items-center gap-1 transition-colors p-2 -mr-2 rounded-md focus:ring-2 focus:ring-[#2563EB]/20">
-                    <Plus size={16} /> Add Item
-                  </button>
                 </div>
                 
                 <div className="space-y-4">
@@ -251,21 +248,22 @@ export default function BillingDemo() {
                   {items.length === 0 && (
                     <div className="text-center py-8 border-2 border-dashed border-[#E2E8F0] rounded-xl bg-[#F8FAFC]">
                       <p className="text-sm font-semibold text-[#64748B] mb-2">No items added yet</p>
-                      <button onClick={addItem} className="btn-secondary text-sm h-9 px-4">
-                        Add First Item
-                      </button>
                     </div>
                   )}
+
+                  <button onClick={addItem} className="w-full py-3.5 mt-2 border-2 border-dashed border-[#CBD5E1] rounded-xl text-[#2563EB] font-bold hover:bg-[#EEF2FF] hover:border-[#2563EB] transition-all flex items-center justify-center gap-2 focus:ring-2 focus:ring-[#2563EB]/20 focus:outline-none">
+                    <Plus size={18} /> Add New Line Item
+                  </button>
                 </div>
               </div>
             </div>
 
             {/* Right Column: Live A4 Document Preview */}
-            <div className="bg-[#F1F5F9] p-4 sm:p-6 lg:p-8 flex items-start justify-center overflow-y-auto min-h-[500px] lg:min-h-[600px] lg:max-h-[calc(100vh-200px)]">
+            <div className="bg-[#F1F5F9] p-4 sm:p-6 lg:p-8 flex items-start justify-center overflow-y-auto min-h-[500px] lg:min-h-[600px] lg:max-h-[calc(100vh-200px)] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               
               <div className="w-full max-w-[500px] flex flex-col gap-6 pb-4">
                 {/* The A4 Page */}
-                <div ref={printRef} className="w-full bg-white rounded-sm shadow-[0_10px_40px_-10px_rgba(15,23,42,0.1)] border border-[#E2E8F0] p-6 sm:p-8 text-sm text-[#0F172A] font-mono print:shadow-none print:border-none">
+                <div ref={printRef} className="w-full bg-white rounded-sm shadow-2xl ring-1 ring-black/5 border border-[#E2E8F0] p-6 sm:p-8 text-sm text-[#0F172A] font-mono print:shadow-none print:border-none print:ring-0">
                   
                   {/* Invoice Header */}
                   <div className="flex justify-between items-end border-b-2 border-[#111A3A] pb-6 mb-6">

@@ -40,7 +40,7 @@ export default function Features() {
               hidden: { opacity: 0, y: 30 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
             }}
-            className="lg:col-span-7 card-premium overflow-hidden bg-white flex flex-col"
+            className="lg:col-span-7 card-premium overflow-hidden bg-white flex flex-col group hover:border-[#BFDBFE] hover:shadow-xl transition-all duration-300"
           >
             <div className="p-8 lg:p-10 flex-1">
               <div className="w-12 h-12 bg-[#EFF6FF] rounded-xl flex items-center justify-center text-[#2563EB] mb-6 border border-[#BFDBFE]">
@@ -53,8 +53,8 @@ export default function Features() {
             </div>
             
             {/* Embedded Mini UI Mockup */}
-            <div className="bg-[#F8FAFC] border-t border-[#E2E8F0] p-6 lg:p-8 mt-auto overflow-hidden relative h-[240px] flex items-start justify-center lg:justify-start">
-               <div className="absolute top-6 left-1/2 -translate-x-1/2 lg:left-8 lg:translate-x-0 w-full max-w-[320px] bg-white rounded-t-xl border border-[#E2E8F0] shadow-[0_4px_20px_-10px_rgba(15,23,42,0.1)] p-5">
+            <div className="bg-gradient-to-br from-[#F8FAFC] to-[#EFF6FF] border-t border-[#E2E8F0] p-6 lg:p-8 mt-auto overflow-hidden relative h-[240px] flex items-start justify-center lg:justify-start transition-colors duration-500 group-hover:from-[#EFF6FF] group-hover:to-[#DBEAFE]">
+               <div className="absolute top-6 left-1/2 -translate-x-1/2 lg:left-8 lg:translate-x-0 w-full max-w-[320px] bg-white rounded-t-xl border border-[#E2E8F0] shadow-2xl p-5 group-hover:-translate-y-2 lg:group-hover:translate-x-0 transition-transform duration-500">
                   <div className="flex justify-between items-center border-b border-[#F1F5F9] pb-3 mb-3">
                     <div className="flex items-center gap-2">
                        <div className="w-5 h-5 rounded-md bg-[#2563EB] flex items-center justify-center">
@@ -96,7 +96,7 @@ export default function Features() {
           <div className="lg:col-span-5 flex flex-col gap-6 lg:gap-8">
             <motion.div 
               variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.6 } } }}
-              className="card-premium p-8 bg-white flex-1 flex flex-col justify-center relative overflow-hidden group"
+              className="card-premium p-8 bg-white flex-1 flex flex-col justify-center relative overflow-hidden group hover:border-[#CCFBF1] hover:shadow-xl transition-all duration-300"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#F0FDFA] rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500" />
               <div className="w-12 h-12 bg-[#F0FDFA] rounded-xl flex items-center justify-center text-[#0D9488] mb-5 border border-[#CCFBF1]">
@@ -110,7 +110,7 @@ export default function Features() {
 
             <motion.div 
               variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.6 } } }}
-              className="card-premium p-8 bg-white flex-1 flex flex-col justify-center relative overflow-hidden group"
+              className="card-premium p-8 bg-white flex-1 flex flex-col justify-center relative overflow-hidden group hover:border-[#FEF3C7] hover:shadow-xl transition-all duration-300"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFFBEB] rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500" />
               <div className="w-12 h-12 bg-[#FFFBEB] rounded-xl flex items-center justify-center text-[#D97706] mb-5 border border-[#FEF3C7]">
@@ -127,9 +127,9 @@ export default function Features() {
           <div className="lg:col-span-12 grid md:grid-cols-2 gap-6 lg:gap-8">
             <motion.div 
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-              className="card-premium p-8 bg-white flex items-start gap-5"
+              className="card-premium p-8 bg-white flex items-start gap-5 group hover:border-[#EDE9FE] hover:shadow-xl transition-all duration-300"
             >
-              <div className="shrink-0 w-12 h-12 bg-[#F5F3FF] rounded-xl flex items-center justify-center text-[#7C3AED] border border-[#EDE9FE]">
+              <div className="shrink-0 w-12 h-12 bg-[#F5F3FF] rounded-xl flex items-center justify-center text-[#7C3AED] border border-[#EDE9FE] group-hover:scale-110 transition-transform duration-300">
                 <Users size={24} />
               </div>
               <div>
@@ -140,9 +140,9 @@ export default function Features() {
             
             <motion.div 
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-              className="card-premium p-8 bg-white flex items-start gap-5"
+              className="card-premium p-8 bg-white flex items-start gap-5 group hover:border-[#E2E8F0] hover:shadow-xl transition-all duration-300"
             >
-              <div className="shrink-0 w-12 h-12 bg-[#F8FAFC] rounded-xl flex items-center justify-center text-[#475569] border border-[#E2E8F0]">
+              <div className="shrink-0 w-12 h-12 bg-[#F8FAFC] rounded-xl flex items-center justify-center text-[#475569] border border-[#E2E8F0] group-hover:scale-110 transition-transform duration-300">
                 <PieChart size={24} />
               </div>
               <div>

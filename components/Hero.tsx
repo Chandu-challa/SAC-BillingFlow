@@ -7,14 +7,14 @@ import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-white">
-      {/* Background Visual System - Subtle glow, no heavy gradients */}
-      <div className="absolute top-0 inset-x-0 h-[600px] bg-gradient-to-b from-[#EFF6FF] to-transparent opacity-50 pointer-events-none" />
-      <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#2563EB] rounded-full blur-[120px] opacity-[0.04] pointer-events-none" />
-      <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-[#14B8A6] rounded-full blur-[120px] opacity-[0.03] pointer-events-none" />
+      {/* Background Visual System - Richer glows for atmosphere */}
+      <div className="absolute top-0 inset-x-0 h-[600px] bg-gradient-to-b from-[#EFF6FF] to-transparent opacity-80 pointer-events-none" />
+      <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#2563EB] rounded-full blur-[140px] opacity-[0.08] pointer-events-none" />
+      <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-[#14B8A6] rounded-full blur-[140px] opacity-[0.06] pointer-events-none" />
       
       {/* Extremely faint grid for texture */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.02]"
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{ backgroundImage: 'linear-gradient(#0F172A 1px, transparent 1px), linear-gradient(90deg, #0F172A 1px, transparent 1px)', backgroundSize: '40px 40px' }}
       />
 
@@ -34,7 +34,7 @@ export default function Hero() {
               </div>
               
               <h1 className="h1-hero lg:h1-hero mb-6 text-[#0F172A]">
-                Smart Billing.<br className="hidden lg:block"/> <span className="text-[#2563EB]">Faster Payments.</span><br className="hidden lg:block"/> Better Business.
+                Smart Billing.<br className="hidden lg:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] to-[#6366F1] drop-shadow-sm">Faster Payments.</span><br className="hidden lg:block"/> Better Business.
               </h1>
 
               <p className="text-[#475569] text-base md:text-lg mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
@@ -52,10 +52,10 @@ export default function Hero() {
               </div>
 
               {/* Value checks */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 text-sm font-semibold text-[#475569]">
-                <span className="flex items-center gap-1.5"><CheckCircle2 size={16} className="text-[#16A34A]" /> GST-ready invoicing</span>
-                <span className="flex items-center gap-1.5"><CheckCircle2 size={16} className="text-[#16A34A]" /> Payment tracking</span>
-                <span className="flex items-center gap-1.5"><CheckCircle2 size={16} className="text-[#16A34A]" /> Customer management</span>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-[13px] font-semibold text-[#475569]">
+                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] shadow-sm"><CheckCircle2 size={14} className="text-[#16A34A]" /> GST-ready invoicing</span>
+                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] shadow-sm"><CheckCircle2 size={14} className="text-[#16A34A]" /> Payment tracking</span>
+                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] shadow-sm"><CheckCircle2 size={14} className="text-[#16A34A]" /> Customer management</span>
               </div>
             </motion.div>
           </div>
@@ -132,10 +132,15 @@ export default function Hero() {
                         <option>Last 6 Months</option>
                       </select>
                     </div>
-                    <div className="flex-1 flex items-end gap-2">
+                    <div className="flex-1 flex items-end gap-2 px-1">
                       {[40, 55, 45, 70, 85, 100].map((h, i) => (
-                        <div key={i} className="flex-1 bg-[#EEF2FF] rounded-t-md relative overflow-hidden" style={{ height: `${h}%` }}>
-                          <div className="absolute top-0 inset-x-0 h-1 bg-[#2563EB]" />
+                        <div key={i} className="group flex-1 flex flex-col justify-end h-full relative cursor-pointer">
+                          <div 
+                            className="w-full bg-gradient-to-t from-[#2563EB]/5 to-[#2563EB]/25 rounded-t-md relative overflow-hidden transition-all duration-300 group-hover:from-[#2563EB]/15 group-hover:to-[#2563EB]/40" 
+                            style={{ height: `${h}%` }}
+                          >
+                            <div className="absolute top-0 inset-x-0 h-1.5 bg-[#2563EB] rounded-t-md transition-transform duration-300 group-hover:scale-y-150 origin-top" />
+                          </div>
                         </div>
                       ))}
                     </div>
