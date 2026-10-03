@@ -51,11 +51,11 @@ export default function Pricing() {
   return (
     <section id="pricing" className="section-pad bg-[#F8FAFC]">
       <div className="container-app">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="h2-section mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+          <h2 className="h2-section mb-3">
             Transparent Pricing
           </h2>
-          <p className="text-lg text-[#475569] mb-8">
+          <p className="text-base md:text-lg text-[#64748B] mb-8">
             Start for free, upgrade when you need more power.
           </p>
           
@@ -95,7 +95,7 @@ export default function Pricing() {
               )}
               
               <h3 className="text-xl font-bold text-[#0F172A] mb-2">{plan.name}</h3>
-              <p className="text-[#475569] text-sm mb-6 min-h-[40px] leading-relaxed">{plan.desc}</p>
+              <p className="text-[#64748B] text-sm mb-6 min-h-[40px] leading-relaxed">{plan.desc}</p>
               
               <div className="mb-8 pb-8 border-b border-[#F1F5F9]">
                 <div className="flex items-end gap-1">

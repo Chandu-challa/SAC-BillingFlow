@@ -37,13 +37,13 @@ export default function FAQ() {
   return (
     <section id="faq" className="section-pad bg-[#F8FAFC]">
       <div className="container-app">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start max-w-6xl mx-auto">
           
           <div className="lg:col-span-4 lg:sticky lg:top-32">
-            <h2 className="h2-section mb-4 text-[#0F172A]">
+            <h2 className="h2-section mb-3 text-[#0F172A]">
               Frequently Asked Questions
             </h2>
-            <p className="text-lg text-[#475569]">
+            <p className="text-base md:text-lg text-[#64748B]">
               Everything you need to know about the product and billing.
             </p>
           </div>
@@ -83,7 +83,7 @@ export default function FAQ() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.2, ease: "easeInOut" }}
                       >
-                        <div className="pb-6 text-[#475569] text-base leading-relaxed pr-8">
+                        <div className="pb-6 text-[#64748B] text-base leading-relaxed pr-8">
                           {faq.a}
                         </div>
                       </motion.div>

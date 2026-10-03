@@ -28,9 +28,9 @@ export default function Solutions() {
   return (
     <section id="solutions" className="section-pad bg-[#F8FAFC]">
       <div className="container-app">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="h2-section mb-4">Built for the Way You Work</h2>
-          <p className="text-lg text-[#475569]">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+          <h2 className="h2-section mb-3">Built for the Way You Work</h2>
+          <p className="text-base md:text-lg text-[#64748B]">
             Whether you process 10 invoices a month or 10,000, our platform adapts to your industry.
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function Solutions() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-[#0F172A] mb-2">{item.title}</h3>
-                <p className="text-[#475569] text-sm leading-relaxed mb-4">{item.desc}</p>
+                <p className="text-[#64748B] text-sm leading-relaxed mb-4">{item.desc}</p>
                 <span className="inline-flex items-center text-sm font-semibold text-[#2563EB]">
                   Explore solution <ArrowRight size={16} className="ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                 </span>

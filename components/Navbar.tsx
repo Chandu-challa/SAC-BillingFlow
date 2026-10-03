@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,6 +8,9 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  const menuRef = useRef<HTMLDivElement>(null);
+  const toggleBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,22 +20,56 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on escape key
+  // Close mobile menu on escape key and focus trap
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsMobileMenuOpen(false);
-    };
-    window.addEventListener('keydown', handleEscape);
-    return () => window.removeEventListener('keydown', handleEscape);
-  }, []);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        toggleBtnRef.current?.focus();
+        return;
+      }
 
-  // Prevent background scroll when mobile menu is open
-  useEffect(() => {
+      if (e.key === 'Tab' && menuRef.current) {
+        const focusableElements = menuRef.current.querySelectorAll(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        
+        if (focusableElements.length === 0) return;
+        
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
+      }
+    };
+
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+      
+      // Auto-focus first element when opened
+      setTimeout(() => {
+        const closeBtn = menuRef.current?.querySelector('button');
+        closeBtn?.focus();
+      }, 100);
     } else {
       document.body.style.overflow = 'unset';
     }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
   }, [isMobileMenuOpen]);
 
   const navLinks = [
@@ -58,7 +95,7 @@ export default function Navbar() {
           href="/" 
           className="flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm"
         >
-          <div className="bg-[#2563EB] text-white font-black text-lg sm:text-xl tracking-tight px-2 py-0.5 rounded-[6px]">
+          <div className="bg-[#2563EB] text-white font-black text-lg sm:text-xl tracking-tight px-2 py-0.5 rounded-[6px]" aria-hidden="true">
             SAC
           </div>
           <span className="font-bold text-lg sm:text-xl tracking-tight text-[#0F172A]">
@@ -97,12 +134,14 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
+          ref={toggleBtnRef}
           className="lg:hidden p-2 text-[#0F172A] hover:bg-[#F1F5F9] rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
           onClick={() => setIsMobileMenuOpen(true)}
           aria-label="Open mobile menu"
           aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-drawer"
         >
-          <Menu size={24} />
+          <Menu size={24} aria-hidden="true" />
         </button>
       </div>
 
@@ -116,10 +155,16 @@ export default function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               className="fixed inset-0 bg-[#0F172A]/40 z-50 lg:hidden backdrop-blur-sm"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                toggleBtnRef.current?.focus();
+              }}
+              aria-hidden="true"
             />
             
             <motion.div
+              ref={menuRef}
+              id="mobile-drawer"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -131,16 +176,19 @@ export default function Navbar() {
             >
               <div className="p-4 sm:p-5 flex items-center justify-between border-b border-[#F1F5F9]">
                 <div className="flex items-center gap-1.5">
-                  <div className="bg-[#2563EB] text-white font-black text-lg tracking-tight px-2 py-0.5 rounded-[6px]">
+                  <div className="bg-[#2563EB] text-white font-black text-lg tracking-tight px-2 py-0.5 rounded-[6px]" aria-hidden="true">
                     SAC
                   </div>
                 </div>
                 <button
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    toggleBtnRef.current?.focus();
+                  }}
                   className="p-2 text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
                   aria-label="Close mobile menu"
                 >
-                  <X size={24} />
+                  <X size={24} aria-hidden="true" />
                 </button>
               </div>
               
@@ -150,8 +198,11 @@ export default function Navbar() {
                     <Link
                       key={link.name}
                       href={link.href}
-                      className="text-lg font-semibold text-[#0F172A] border-b border-transparent hover:border-[#F1F5F9] pb-2 transition-colors"
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-lg font-semibold text-[#0F172A] border-b border-transparent hover:border-[#F1F5F9] pb-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        toggleBtnRef.current?.focus();
+                      }}
                     >
                       {link.name}
                     </Link>
@@ -162,15 +213,21 @@ export default function Navbar() {
               <div className="p-4 sm:p-6 border-t border-[#F1F5F9] bg-[#F8FAFC] flex flex-col gap-3">
                 <Link 
                   href="#" 
-                  className="btn-secondary w-full"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="btn-secondary w-full justify-center"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    toggleBtnRef.current?.focus();
+                  }}
                 >
                   Login
                 </Link>
                 <Link 
                   href="#demo" 
-                  className="btn-primary w-full"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="btn-primary w-full justify-center"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    toggleBtnRef.current?.focus();
+                  }}
                 >
                   Get Started
                 </Link>

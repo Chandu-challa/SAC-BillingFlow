@@ -18,13 +18,13 @@ export default function PaymentTracking() {
   return (
     <section id="payment-tracking" className="section-pad bg-white">
       <div className="container-app">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           
           <div>
-            <h2 className="h2-section mb-6">
+            <h2 className="h2-section mb-4">
               Track Payments with Precision
             </h2>
-            <p className="text-lg text-[#475569] leading-relaxed mb-8">
+            <p className="text-base md:text-lg text-[#64748B] leading-relaxed mb-8">
               Never lose sight of an invoice. Our intelligent dashboard categorizes every invoice automatically, so you instantly know who has paid and who needs a reminder.
             </p>
             <div className="space-y-4">

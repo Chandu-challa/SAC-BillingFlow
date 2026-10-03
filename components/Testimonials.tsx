@@ -20,10 +20,10 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white border-t border-[#F1F5F9]">
+    <section className="py-12 md:py-16 bg-white border-t border-[#F1F5F9]">
       <div className="container-app">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="h2-section mb-4 text-[#0F172A]">
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="h2-section mb-3 text-[#0F172A]">
             Trusted by Growing Businesses
           </h2>
         </div>
@@ -38,7 +38,7 @@ export default function Testimonials() {
                   </svg>
                 ))}
               </div>
-              <p className="text-[#475569] text-sm md:text-base leading-relaxed mb-8 flex-1">
+              <p className="text-[#64748B] text-sm md:text-base leading-relaxed mb-8 flex-1">
                 &quot;{review.content}&quot;
               </p>
               

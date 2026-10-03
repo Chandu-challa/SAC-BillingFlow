@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0B1120] pt-20 pb-10 border-t border-[#1E293B]">
+    <footer className="bg-[#0B1120] pt-16 pb-10 border-t border-[#1E293B]">
       <div className="container-app">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12 mb-12">
           
           <div className="col-span-2 lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-1.5 mb-6">

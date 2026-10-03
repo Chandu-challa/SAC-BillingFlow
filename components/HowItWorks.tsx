@@ -10,11 +10,11 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="section-pad bg-white">
       <div className="container-app">
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-          <h2 className="h2-section mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <h2 className="h2-section mb-3">
             A Seamless Workflow
           </h2>
-          <p className="text-lg text-[#475569]">
+          <p className="text-base md:text-lg text-[#64748B]">
             Four simple steps to transform the way you manage billing.
           </p>
         </div>
@@ -37,7 +37,7 @@ export default function HowItWorks() {
                 
                 <div>
                   <h3 className="text-lg font-bold text-[#0F172A] mb-2">{step.title}</h3>
-                  <p className="text-sm text-[#475569] leading-relaxed max-w-[200px] md:mx-auto">
+                  <p className="text-sm text-[#64748B] leading-relaxed max-w-[200px] md:mx-auto">
                     {step.desc}
                   </p>
                 </div>

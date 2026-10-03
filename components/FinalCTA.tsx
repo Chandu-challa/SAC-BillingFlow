@@ -16,10 +16,10 @@ export default function FinalCTA() {
       
       <div className="container-app relative z-10 text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-[clamp(2.5rem,4vw,3.5rem)] font-extrabold text-white mb-6 tracking-tight leading-[1.1]">
+          <h2 className="text-[clamp(2rem,4vw,3rem)] font-extrabold text-white mb-4 md:mb-6 tracking-tight leading-[1.1]">
             Ready to Simplify Your Billing?
           </h2>
-          <p className="text-lg md:text-xl text-[#94A3B8] mb-10 leading-relaxed">
+          <p className="text-lg md:text-xl text-[#94A3B8] mb-8 md:mb-10 leading-relaxed">
             Spend less time managing invoices and more time growing your business.
           </p>
           

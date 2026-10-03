@@ -6,16 +6,17 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-white">
+    <section className="relative pt-20 pb-12 lg:pt-24 lg:pb-16 overflow-hidden bg-white">
       {/* Background Visual System - Richer glows for atmosphere */}
-      <div className="absolute top-0 inset-x-0 h-[600px] bg-gradient-to-b from-[#EFF6FF] to-transparent opacity-80 pointer-events-none" />
-      <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#2563EB] rounded-full blur-[140px] opacity-[0.08] pointer-events-none" />
-      <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-[#14B8A6] rounded-full blur-[140px] opacity-[0.06] pointer-events-none" />
+      <div className="absolute top-0 inset-x-0 h-[600px] bg-gradient-to-b from-[#EFF6FF] to-transparent opacity-80 pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#2563EB] rounded-full blur-[140px] opacity-[0.08] pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-[#14B8A6] rounded-full blur-[140px] opacity-[0.06] pointer-events-none" aria-hidden="true" />
       
       {/* Extremely faint grid for texture */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{ backgroundImage: 'linear-gradient(#0F172A 1px, transparent 1px), linear-gradient(90deg, #0F172A 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+        aria-hidden="true"
       />
 
       <div className="container-app relative z-10">
@@ -44,7 +45,7 @@ export default function Hero() {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
                 <Link href="#demo" className="btn-primary w-full sm:w-auto h-12 text-[15px]">
                   Create Free Invoice
-                  <ArrowRight size={18} className="ml-2" />
+                  <ArrowRight size={18} className="ml-2" aria-hidden="true" />
                 </Link>
                 <Link href="#features" className="btn-secondary w-full sm:w-auto h-12 text-[15px]">
                   Explore Features
@@ -53,9 +54,9 @@ export default function Hero() {
 
               {/* Value checks */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-[13px] font-semibold text-[#475569]">
-                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] shadow-sm"><CheckCircle2 size={14} className="text-[#16A34A]" /> GST-ready invoicing</span>
-                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] shadow-sm"><CheckCircle2 size={14} className="text-[#16A34A]" /> Payment tracking</span>
-                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] shadow-sm"><CheckCircle2 size={14} className="text-[#16A34A]" /> Customer management</span>
+                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] shadow-sm"><CheckCircle2 size={14} className="text-[#16A34A]" aria-hidden="true" /> GST-ready invoicing</span>
+                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] shadow-sm"><CheckCircle2 size={14} className="text-[#16A34A]" aria-hidden="true" /> Payment tracking</span>
+                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] shadow-sm"><CheckCircle2 size={14} className="text-[#16A34A]" aria-hidden="true" /> Customer management</span>
               </div>
             </motion.div>
           </div>
@@ -88,7 +89,7 @@ export default function Hero() {
                     </div>
                   </div>
                   
-                  <MoreVertical size={16} className="text-[#94A3B8]" />
+                  <MoreVertical size={16} className="text-[#94A3B8]" aria-hidden="true" />
                 </div>
 
                 <div className="p-6 md:p-8 space-y-8">
@@ -98,28 +99,28 @@ export default function Hero() {
                       <p className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Revenue</p>
                       <p className="text-xl md:text-2xl font-bold text-[#0F172A]">₹4.82L</p>
                       <p className="text-xs font-semibold text-[#16A34A] flex items-center gap-1">
-                        <TrendingUp size={12} /> +18.4%
+                        <TrendingUp size={12} aria-hidden="true" /> +18.4%
                       </p>
                     </div>
                     <div className="space-y-1">
                       <p className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Paid</p>
                       <p className="text-xl md:text-2xl font-bold text-[#0F172A]">₹3.91L</p>
                       <p className="text-xs font-semibold text-[#16A34A] flex items-center gap-1">
-                        <TrendingUp size={12} /> +12.1%
+                        <TrendingUp size={12} aria-hidden="true" /> +12.1%
                       </p>
                     </div>
                     <div className="space-y-1 border-l border-[#F1F5F9] pl-4">
                       <p className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Pending</p>
                       <p className="text-xl md:text-2xl font-bold text-[#0F172A]">₹58.2K</p>
                       <p className="text-xs font-semibold text-[#DC2626] flex items-center gap-1">
-                        <TrendingUp size={12} className="rotate-180" /> -4.2%
+                        <TrendingUp size={12} className="rotate-180" aria-hidden="true" /> -4.2%
                       </p>
                     </div>
                     <div className="space-y-1 border-l border-[#F1F5F9] pl-4">
                       <p className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Overdue</p>
                       <p className="text-xl md:text-2xl font-bold text-[#0F172A]">₹33.4K</p>
                       <p className="text-xs font-semibold text-[#DC2626] flex items-center gap-1">
-                        <TrendingUp size={12} /> +2.8%
+                        <TrendingUp size={12} aria-hidden="true" /> +2.8%
                       </p>
                     </div>
                   </div>

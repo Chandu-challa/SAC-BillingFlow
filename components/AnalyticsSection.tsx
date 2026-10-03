@@ -14,11 +14,11 @@ export default function AnalyticsSection() {
   return (
     <section id="analytics" className="section-pad bg-[#F8FAFC]">
       <div className="container-app">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="h2-section mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+          <h2 className="h2-section mb-3">
             Know Your Business at a Glance
           </h2>
-          <p className="text-lg text-[#475569]">
+          <p className="text-base md:text-lg text-[#64748B]">
             Real-time financial insights that help you make better decisions.
           </p>
         </div>

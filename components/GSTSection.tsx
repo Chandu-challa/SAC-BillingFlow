@@ -5,13 +5,13 @@ export default function GSTSection() {
   return (
     <section className="section-pad bg-gradient-to-br from-[#F0FDFA] to-[#EFF6FF]">
       <div className="container-app">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           
           <div className="order-2 lg:order-1">
-            <h2 className="h2-section mb-6 text-[#0F172A]">
+            <h2 className="h2-section mb-4 text-[#0F172A]">
               GST Billing Without the Complexity
             </h2>
-            <p className="text-lg text-[#475569] leading-relaxed mb-8">
+            <p className="text-base md:text-lg text-[#64748B] leading-relaxed mb-8">
               Generate fully detailed invoices with automatic CGST, SGST, and IGST calculations. We handle the math so you can focus on your business.
             </p>
             
